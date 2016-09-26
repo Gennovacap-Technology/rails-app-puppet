@@ -1,23 +1,20 @@
+---
 ? !ruby/symbol backends
 :
   - yaml
-
-
 ? !ruby/symbol hierarchy
 :
-  - 'nginx'
-  - 'packages'
-  - 'postgres'
-  - 'ssl_certificates'
-  - 'users'
+  - nginx
+  - packages
+  - postgres
+  - ssl_certificates
+  - users
+? !ruby/symbol logger
+:
+  - puppet
+? !ruby/symbol merge_behavior
+: deeper
 ? !ruby/symbol yaml
 :
   ? !ruby/symbol datadir
   : /etc/puppet/hieradata/
-
-? !ruby/symbol logger
-:
-  - puppet
-
-:merge_behavior: deeper
-

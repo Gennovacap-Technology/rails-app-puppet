@@ -2,18 +2,20 @@
 
 node 'rails-app-server' {
 
-   $packages = [
-	'ufw',
-  	'htop',
-   ]
+  # Hiera lookups
+  $packages = hiera_array('packages')
 
-   package { $packages:
-	ensure => 'installed',
-   }
+  # Validate all the variables
+  validate_array($packages)
 
-   include '::nginx'
-   include '::ntp'
-   include 'jenkins'
+
+  package { $packages:
+     ensure => 'installed',
+  }
+
+include '::nginx'
+include '::ntp'
+include 'jenkins'
 
    class { 'postgresql::server': }
 
