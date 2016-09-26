@@ -1,0 +1,18 @@
+---
+databases:
+  gcap_prod:
+    name: 'gcap_prod'
+    user: 'gcapproddbuser'
+    password: '6JPP9py4lrt'
+  gcap_stage:
+    name: 'gcap_stage'
+    user: 'gcapstgdbuser'
+    password: '6JP08293nalrt'
+  teamaustin_prod:
+    name: 'teamaustin_prod'
+    user: 'taproddbuser'
+    password: '098fa79pq!0sd'
+  teamaustin_stage:
+    name: 'teamaustin_stage'
+    user: 'tastgdbuser'
+    password: '019adsad9#09am1'

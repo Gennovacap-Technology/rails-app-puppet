@@ -9,6 +9,7 @@
   - postgres
   - ssl_certificates
   - users
+  - common
 ? !ruby/symbol logger
 :
   - puppet

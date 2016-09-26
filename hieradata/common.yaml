@@ -1,0 +1,6 @@
+---
+classes:
+  - nginx
+  - ntp
+  - jenkins
+  - 'postgresql::server'
