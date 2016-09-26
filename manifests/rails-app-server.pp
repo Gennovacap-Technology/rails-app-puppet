@@ -16,30 +16,30 @@ node 'rails-app-server' {
     ensure => 'installed',
   }
 
+  # Databases
   $databases = hiera_hash('databases')
 
-  create_resources("postgresql::server::db", $databases)
+  # Validate all the variables
+  validate_hash($databases)
 
+  create_resources('postgresql::server::db', $databases)
 
+  # Nginx Vhosts
 
-  # class { 'docker' :
-  #   docker_users => ['jenkins'],
-  #   tcp_bind     => 'tcp://127.0.0.1:4243',
-  #   socket_bind  => 'unix:///var/run/docker.sock',
-  # }
-  #
-  # nginx::resource::upstream { 'jenkins_upstream':
-  #   members => [
-  #   'localhost:8080',
-  #   ],
-  # }
-  #
-  # nginx::resource::vhost { 'ci.gennovacap.com':
-  #   proxy => 'http://jenkins_upstream',
-  #   ssl              => true,
-  #   rewrite_to_https => true,
-  #   ssl_key          => '/etc/letsencrypt/live/ci.gennovacap.com/privkey.pem',
-  #   ssl_cert         => '/etc/letsencrypt/live/ci.gennovacap.com/fullchain.pem',
-  # }
+  $nginx_vhosts = hiera_hash('nginx_vhosts')
+
+  # Validate all the variables
+  validate_hash($nginx_vhosts)
+
+  create_resources('nginx::resource::vhost', $nginx_vhosts)
+
+  # Nginx Upstreams
+
+  $nginx_upstreams = hiera_hash('nginx_upstreams')
+
+  # Validate all the variables
+  validate_hash($nginx_upstreams)
+
+  create_resources('nginx::resource::upstream', $nginx_upstreams)
 
 }

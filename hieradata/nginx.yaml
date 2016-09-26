@@ -1,0 +1,12 @@
+---
+nginx_vhosts:
+  ci.gennovacap.com:
+    proxy: 'http://jenkins_upstream'
+    ssl: true
+    rewrite_to_https: true
+    ssl_key: '/etc/letsencrypt/live/ci.gennovacap.com/privkey.pem'
+    ssl_cert: '/etc/letsencrypt/live/ci.gennovacap.com/fullchain.pem'
+
+nginx_upstreams:
+  jenkins_upstream:
+    members:  ['localhost:8080']
