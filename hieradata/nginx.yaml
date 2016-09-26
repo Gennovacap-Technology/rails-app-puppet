@@ -6,7 +6,39 @@ nginx_vhosts:
     rewrite_to_https: true
     ssl_key: '/etc/letsencrypt/live/ci.gennovacap.com/privkey.pem'
     ssl_cert: '/etc/letsencrypt/live/ci.gennovacap.com/fullchain.pem'
+  stage.gennovacap.com:
+    proxy: 'http://gcap_stage_upstream'
+    ssl: false
+    rewrite_to_https: false
+    ssl_key: '/etc/letsencrypt/live/ci.gennovacap.com/privkey.pem'
+    ssl_cert: '/etc/letsencrypt/live/ci.gennovacap.com/fullchain.pem'
+  gennovacap.com:
+    proxy: 'http://gcap_prod_upstream'
+    ssl: false
+    rewrite_to_https: false
+    ssl_key: '/etc/letsencrypt/live/ci.gennovacap.com/privkey.pem'
+    ssl_cert: '/etc/letsencrypt/live/ci.gennovacap.com/fullchain.pem'
+  stage.teamaustin.com:
+    proxy: 'http://teamaustin_stage_upstream'
+    ssl: false
+    rewrite_to_https: false
+    ssl_key: '/etc/letsencrypt/live/ci.gennovacap.com/privkey.pem'
+    ssl_cert: '/etc/letsencrypt/live/ci.gennovacap.com/fullchain.pem'
+  teamaustin.com:
+    proxy: 'http://teamaustin_prod_upstream'
+    ssl: false
+    rewrite_to_https: false
+    ssl_key: '/etc/letsencrypt/live/ci.gennovacap.com/privkey.pem'
+    ssl_cert: '/etc/letsencrypt/live/ci.gennovacap.com/fullchain.pem'
 
 nginx_upstreams:
   jenkins_upstream:
     members:  ['localhost:8080']
+  gcap_stage_upstream:
+    members:  ['localhost:9000']
+  gcap_prod_upstream:
+    members:  ['localhost:9001']
+  teamaustin_stage_upstream:
+    members:  ['localhost:9002']
+  teamaustin_prod_upstream:
+    members:  ['localhost:9003']
