@@ -18,13 +18,8 @@ node 'rails-app-server' {
 
   $databases = hiera_hash('databases')
 
-  $databases.each |$key,$value| {
-    postgresql::server::db { $key:
-      user     => $value['user'],
-      password => postgresql_password($value['user'], $value['password']),
-    }
+  create_resources("postgresql::server::db", $databases)
 
-  }
 
 
   # class { 'docker' :
