@@ -58,6 +58,15 @@ node 'rails-app-server' {
 
   create_resources('nginx::resource::upstream', $nginx_upstreams)
 
+  # Nginx SSL certificates
+
+  $ssl_certs = hiera_hash('ssl_certs')
+
+  # Validate all the variables
+  validate_hash($ssl_certs)
+
+  create_resources('file', $ssl_certs)
+
   class { 'postgresql::server' :
     listen_addresses => '*'
   }

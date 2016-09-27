@@ -1,0 +1,12 @@
+---
+ssl_certs:
+  /etc/nginx/ssl/www.gennovacap.com.pem:
+    owner: 'root'
+    group: 'root'
+    mode: 644
+    content: template("/etc/puppet/files/www.gennovacap.com.pem")
+  /etc/nginx/ssl/www.gennovacap.com.key:
+    owner: 'root'
+    group: 'root'
+    mode: 644
+    content: template("/etc/puppet/files/www.gennovacap.com.key")
