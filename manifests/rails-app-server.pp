@@ -58,14 +58,24 @@ node 'rails-app-server' {
 
   create_resources('nginx::resource::upstream', $nginx_upstreams)
 
-  # Nginx SSL certificates
 
-  $ssl_certs = hiera_hash('ssl_certs')
+
+  file { '/etc/nginx/ssl/www.gennovacap.com.key':
+          owner   => 'root',
+          group   => 'root',
+          mode    => '0644',
+          content => template('/etc/puppet/files/www.gennovacap.com.key'),
+  }
+
+  file { '/etc/nginx/ssl/www.gennovacap.com.pem':
+          owner   => 'root',
+          group   => 'root',
+          mode    => '0644',
+          content => template('/etc/puppet/files/www.gennovacap.com.pem'),
+  }
 
   # Validate all the variables
   validate_hash($ssl_certs)
-
-  create_resources('file', $ssl_certs)
 
   class { 'postgresql::server' :
     listen_addresses => '*'
