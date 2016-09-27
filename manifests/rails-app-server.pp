@@ -42,4 +42,8 @@ node 'rails-app-server' {
 
   create_resources('nginx::resource::upstream', $nginx_upstreams)
 
+  class { 'postgresql::server' :
+    listen_addresses => '*'
+  }
+
 }

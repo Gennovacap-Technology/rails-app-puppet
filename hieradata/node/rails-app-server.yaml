@@ -1,7 +1,4 @@
 ---
-
 docker::docker_users: ['jenkins']
 docker::tcp_bind: 'tcp://127.0.0.1:4243'
 docker::socket_bind: 'unix:///var/run/docker.sock'
-
-postgresql::server:listen_addresses: '*'
