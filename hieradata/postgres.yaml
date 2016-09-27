@@ -20,14 +20,14 @@ databases:
 pg_hba:
   docker:
     description: "Open up PostgreSQL for access from 172.17.0.0/16"
-    type: 'all'
+    type: 'host'
     database: 'all'
     user: 'all'
     address: '172.17.0.0/16'
     auth_method: 'md5'
   local:
     description: "Open up PostgreSQL for access from 104.236.58.39/32"
-    type: 'all'
+    type: 'host'
     database: 'all'
     user: 'all'
     address: '104.236.58.39/32'
