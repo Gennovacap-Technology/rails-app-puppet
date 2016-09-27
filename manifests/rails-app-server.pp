@@ -32,6 +32,14 @@ node 'rails-app-server' {
 
   create_resources('postgresql::server::pg_hba_rule', $pg_hba)
 
+  # PG Grants
+  $pg_grants = hiera_hash('pg_grants')
+
+  # Validate all the variables
+  validate_hash($pg_grants)
+
+  create_resources('postgresql::server::database_grant', $pg_grants)
+
   # Nginx Vhosts
 
   $nginx_vhosts = hiera_hash('nginx_vhosts')

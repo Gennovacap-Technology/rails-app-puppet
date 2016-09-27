@@ -32,3 +32,9 @@ pg_hba:
     user: 'all'
     address: '104.236.58.39/32'
     auth_method: 'md5'
+
+pg_grants:
+  gcap_prod:
+    privilege: 'ALL'
+    db: 'gcap_prod'
+    role: 'gcapproddbuser'
