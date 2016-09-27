@@ -4,6 +4,7 @@
   - yaml
 ? !ruby/symbol hierarchy
 :
+  - "node/%{hostname}"
   - nginx
   - packages
   - postgres
