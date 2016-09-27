@@ -8,10 +8,10 @@ nginx_vhosts:
     ssl_cert: '/etc/letsencrypt/live/ci.gennovacap.com/fullchain.pem'
   stage.gennovacap.com:
     proxy: 'http://gcap_stage_upstream'
-    ssl: true
-    rewrite_to_https: true
-    ssl_key: '/etc/nginx/ssl/www.gennovacap.com.pem'
-    ssl_cert: '/etc/nginx/ssl/www.gennovacap.com.key'
+    ssl: false
+    rewrite_to_https: false
+    ssl_key: '/etc/letsencrypt/live/ci.gennovacap.com/privkey.pem'
+    ssl_cert: '/etc/letsencrypt/live/ci.gennovacap.com/fullchain.pem'
   gennovacap.com:
     proxy: 'http://gcap_prod_upstream'
     ssl: false
