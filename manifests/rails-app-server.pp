@@ -58,8 +58,6 @@ node 'rails-app-server' {
 
   create_resources('nginx::resource::upstream', $nginx_upstreams)
 
-
-
   file { '/etc/nginx/ssl/www.gennovacap.com.key':
           owner   => 'root',
           group   => 'root',
@@ -73,9 +71,6 @@ node 'rails-app-server' {
           mode    => '0644',
           content => template('/etc/puppet/files/www.gennovacap.com.pem'),
   }
-
-  # Validate all the variables
-  validate_hash($ssl_certs)
 
   class { 'postgresql::server' :
     listen_addresses => '*'
